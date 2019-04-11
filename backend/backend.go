@@ -21,6 +21,7 @@ import (
 	"github.com/sensu/sensu-go/backend/authentication"
 	"github.com/sensu/sensu-go/backend/authentication/jwt"
 	"github.com/sensu/sensu-go/backend/authentication/providers/basic"
+        "github.com/sensu/sensu-go/backend/authentication/providers/umich"
 	"github.com/sensu/sensu-go/backend/authorization/rbac"
 	"github.com/sensu/sensu-go/backend/daemon"
 	"github.com/sensu/sensu-go/backend/dashboardd"
@@ -315,6 +316,11 @@ func Initialize(config *Config) (*Backend, error) {
 		Store:      stor,
 	}
 	authenticator.AddProvider(basic)
+
+	umich := &umich.Provider{
+		ObjectMeta: corev2.ObjectMeta{Name: umich.Type},
+	}
+	authenticator.AddProvider(umich)
 
 	var clusterVersion string
 	// only retrieve the cluster version if etcd is embedded
