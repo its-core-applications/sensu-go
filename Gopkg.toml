@@ -213,3 +213,7 @@ required = [
 [[constraint]]
   branch = "master"
   name = "golang.org/x/sys"
+
+[[constraint]]
+  name = "gopkg.in/jcmturner/gokrb5.v7"
+  version = "7.2.2"
