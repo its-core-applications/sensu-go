@@ -433,6 +433,14 @@
   revision = "80a92cca79a8041496ccc9dd773fcb52a57ec6f9"
 
 [[projects]]
+  digest = "1:f14364057165381ea296e49f8870a9ffce2b8a95e34d6ae06c759106aaef428c"
+  name = "github.com/hashicorp/go-uuid"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "4f571afc59f3043a65f8fe6bf46d887b10a01d43"
+  version = "v1.0.1"
+
+[[projects]]
   branch = "master"
   digest = "1:b8017e2bad40823cef7b1dc42bebef46d473b359ef9e5751dcd24f42e512498c"
   name = "github.com/hashicorp/hcl"
@@ -474,6 +482,17 @@
   packages = ["."]
   pruneopts = "UT"
   revision = "15a1cd37f0502f3b2eccb6d71a7958edda314633"
+
+[[projects]]
+  branch = "master"
+  digest = "1:ae221758bdddd57f5c76f4ee5e4110af32ee62583c46299094697f8f127e63da"
+  name = "github.com/jcmturner/gofork"
+  packages = [
+    "encoding/asn1",
+    "x/crypto/pbkdf2",
+  ]
+  pruneopts = "UT"
+  revision = "dc7c13fece037a4a36e2b3c69db4991498d30692"
 
 [[projects]]
   digest = "1:75ab90ae3f5d876167e60f493beadfe66f0ed861a710f283fb06c86437a09538"
@@ -970,11 +989,13 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:7d23b292d47779a336067fed1e72c12a92c1254c26ede2906ecb39a70472e7bd"
+  digest = "1:00b62dd66647981052891466d010c3fe1d228f8ab805210834a070e21a3063b9"
   name = "golang.org/x/crypto"
   packages = [
     "bcrypt",
     "blowfish",
+    "md4",
+    "pbkdf2",
     "ssh/terminal",
   ]
   pruneopts = "UT"
@@ -1104,6 +1125,14 @@
   version = "v1.4.0"
 
 [[projects]]
+  digest = "1:af07c44dc04418be522bfd4e21ca9130d58169ea084e3a883e23772003a381c4"
+  name = "gopkg.in/asn1-ber.v1"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "f715ec2f112d1e4195b827ad68cf44017a3ef2b1"
+  version = "v1.3"
+
+[[projects]]
   digest = "1:0eafa746ee41b4ad8a631b86dbbcd4bc02f7e7bfc32be4a3e503062c2f1b49a5"
   name = "gopkg.in/h2non/filetype.v1"
   packages = [
@@ -1114,6 +1143,79 @@
   pruneopts = "UT"
   revision = "22e255079ab40241c671d457081831d972f0436b"
   version = "v1.0.3"
+
+[[projects]]
+  digest = "1:c902038ee2d6f964d3b9f2c718126571410c5d81251cbab9fe58abd37803513c"
+  name = "gopkg.in/jcmturner/aescts.v1"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "f6abebb3171c4c1b1fea279cb7c7325020a26290"
+  version = "v1.0.1"
+
+[[projects]]
+  digest = "1:a1a3e185c03d79a7452d5d5b4c91be4cc433f55e6ed3a35233d852c966e39013"
+  name = "gopkg.in/jcmturner/dnsutils.v1"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "13eeb8d49ffb74d7a75784c35e4d900607a3943c"
+  version = "v1.0.1"
+
+[[projects]]
+  digest = "1:5842913724551997c82539fc690ea003cc88cffc0122fd797bd3d08a55a14dd6"
+  name = "gopkg.in/jcmturner/gokrb5.v7"
+  packages = [
+    "asn1tools",
+    "client",
+    "config",
+    "credentials",
+    "crypto",
+    "crypto/common",
+    "crypto/etype",
+    "crypto/rfc3961",
+    "crypto/rfc3962",
+    "crypto/rfc4757",
+    "crypto/rfc8009",
+    "iana",
+    "iana/addrtype",
+    "iana/adtype",
+    "iana/asnAppTag",
+    "iana/chksumtype",
+    "iana/errorcode",
+    "iana/etypeID",
+    "iana/flags",
+    "iana/keyusage",
+    "iana/msgtype",
+    "iana/nametype",
+    "iana/patype",
+    "kadmin",
+    "keytab",
+    "krberror",
+    "messages",
+    "pac",
+    "types",
+  ]
+  pruneopts = "UT"
+  revision = "8bb39e30c77090d39758af8e99f8e85c2449778f"
+  version = "v7.2.2"
+
+[[projects]]
+  digest = "1:0f16d9c577198e3b8d3209f5a89aabe679525b2aba2a7548714e973035c0e232"
+  name = "gopkg.in/jcmturner/rpc.v1"
+  packages = [
+    "mstypes",
+    "ndr",
+  ]
+  pruneopts = "UT"
+  revision = "99a8ce2fbf8b8087b6ed12a37c61b10f04070043"
+  version = "v1.1.0"
+
+[[projects]]
+  digest = "1:2a792dde3ae5dc95000d4dee312523504ea875b097a2b119a2f55d1d1d32ed61"
+  name = "gopkg.in/ldap.v3"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "729c20c2694d870bcd631f0dadaecd088bd7ccbc"
+  version = "v3.0.2"
 
 [[projects]]
   digest = "1:9935525a8c49b8434a0b0a54e1980e94a6fae73aaff45c5d33ba8dff69de123e"
@@ -1213,6 +1315,9 @@
     "google.golang.org/grpc/grpclog",
     "gopkg.in/h2non/filetype.v1",
     "gopkg.in/h2non/filetype.v1/types",
+    "gopkg.in/jcmturner/gokrb5.v7/client",
+    "gopkg.in/jcmturner/gokrb5.v7/config",
+    "gopkg.in/ldap.v3",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
