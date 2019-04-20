@@ -399,20 +399,7 @@ func (t *Tessend) start(tessen *corev2.TessenConfig) {
 // enabled checks the tessen config for opt-out status, and verifies the existence of an enterprise license.
 // It returns a boolean value indicating if tessen should be enabled or not.
 func (t *Tessend) enabled(tessen *corev2.TessenConfig) bool {
-	if !tessen.OptOut {
-		logger.WithField("opt-out", tessen.OptOut).Info("tessen is opted in, enabling tessen.. thank you so much for your support 💚")
-		return true
-	}
-
-	wrapper := &Wrapper{}
-	err := etcd.Get(t.ctx, t.client, licenseStorePath, wrapper)
-	if err != nil {
-		logger.WithField("opt-out", tessen.OptOut).Info("tessen is opted out, patiently waiting for you to opt back in")
-	} else {
-		logger.WithField("opt-out", tessen.OptOut).Info("tessen is opted out but a enterprise license is detected, enabling tessen.. thank you so much for your support 💚")
-	}
-
-	return err == nil
+	return false
 }
 
 // collectAndSend is a durable function to collect and send data to tessen.
