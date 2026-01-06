@@ -1,17 +1,16 @@
 package umich
 
 import (
+	"bufio"
 	"context"
 	"errors"
-	"fmt"
-	"strings"
+	"os"
 
 	corev2 "github.com/sensu/sensu-go/api/core/v2"
 	"github.com/sensu/sensu-go/backend/authentication/jwt"
 	"github.com/sensu/sensu-go/types"
 	krb_client "gopkg.in/jcmturner/gokrb5.v7/client"
 	krb_config "gopkg.in/jcmturner/gokrb5.v7/config"
-	ldap "gopkg.in/ldap.v3"
 )
 
 const Type = "umich"
@@ -91,44 +90,20 @@ func (p *Provider) claims(username string) (*corev2.Claims, error) {
 }
 
 func (p *Provider) groups(username string) ([]string, error) {
-	conn, err := ldap.Dial("tcp", "ldap.umich.edu:389")
+	file, err := os.Open("/etc/sensu/blackops")
 	if err != nil {
 		return nil, err
 	}
-	defer conn.Close()
+	defer file.Close()
 
-	err = conn.UnauthenticatedBind("")
-	if err != nil {
-		return nil, err
-	}
-
-	attrs := []string{"cn", "member"}
-
-	search := ldap.NewSearchRequest(
-		"ou=Groups,dc=umich,dc=edu",
-		ldap.ScopeWholeSubtree,
-		ldap.NeverDerefAliases,
-		0,
-		0,
-		false,
-		"(cn=blackops)",
-		attrs,
-		nil,
-	)
-
-	res, err := conn.Search(search)
-	if err != nil {
-		return nil, err
-	}
-
-	members := res.Entries[0].GetAttributeValues("member")
-	for _, memb := range members {
-		if strings.HasPrefix(memb, fmt.Sprintf("uid=%s,", username)) {
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		if scanner.Text() == username {
 			return []string{"blackops"}, nil
 		}
 	}
 
-	return []string{"readonly"}, nil
+	return nil, errors.New("not found in authorization file /etc/sensu/blackops")
 }
 
 func (p *Provider) StorePrefix() string {
